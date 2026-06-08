@@ -1,35 +1,25 @@
+
+
+
+
 import { useState } from "react";
-import { FiMail, FiLock } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { FiMail, FiLock } from "react-icons/fi"; // Icons
+import { useNavigate } from "react-router-dom"; // <-- Add this
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // <-- Add this
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-    try {
-      const res = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.message) {
-        alert("Login successful");
-        navigate("/dashboard"); // Redirect to dashboard
-      } else {
-        alert(data.error || "Invalid email or password");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Something went wrong");
+    // ✅ Redirect to MainDashboard after "login"
+    // You can replace this condition with real login check later
+    if (email && password) {
+      navigate("/dashboard"); // <-- Redirect
     }
   }
 
@@ -37,9 +27,7 @@ function Login() {
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-orange-100 via-orange-200 to-orange-300">
       <div className="w-full max-w-md backdrop-blur-md bg-white/70 p-10 rounded-3xl shadow-xl border border-orange-200 transition-transform duration-500 hover:scale-[1.02]">
         <h2 className="text-4xl font-bold text-center text-orange-700 mb-2 font-serif">Welcome Back</h2>
-        <p className="text-center text-sm text-orange-500 mb-6">
-          Login to continue to <span className="font-semibold">NutriAi</span>
-        </p>
+        <p className="text-center text-sm text-orange-500 mb-6">Login to continue to <span className="font-semibold">NutriAi</span></p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
@@ -77,7 +65,7 @@ function Login() {
           {/* Actions */}
           <div className="flex justify-between text-sm text-orange-500">
             <a href="#" className="hover:underline">Forgot password?</a>
-            <a href="/signup" className="hover:underline">Create account</a>
+            <a href="#" className="hover:underline">Create account</a>
           </div>
 
           {/* Submit */}

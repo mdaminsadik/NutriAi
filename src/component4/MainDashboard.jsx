@@ -34,7 +34,7 @@ const MainDashboard = () => {
       <div className="flex justify-between items-center w-full max-w-7xl mb-6 z-10 relative">
         <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-400 tracking-wide">NutriAi</h1>
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-orange-300 flex items-center justify-center text-white font-bold shadow-lg cursor-pointer hover:scale-110 transition-transform">A</div>
+          {/* <div className="w-14 h-14 rounded-full bg-orange-300 flex items-center justify-center text-white font-bold shadow-lg cursor-pointer hover:scale-110 transition-transform">A</div> */}
         </div>
       </div>
 

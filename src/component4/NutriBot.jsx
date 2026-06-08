@@ -16,7 +16,7 @@ const NutriBot = () => {
 
     try {
       // Call Flask API
-      const response = await fetch("http://127.0.0.1:5000/chat", {
+      const response = await fetch("http://127.0.0.1:5000/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
@@ -24,7 +24,7 @@ const NutriBot = () => {
       const data = await response.json();
 
       // Add bot response
-      setChat([...newChat, { sender: "bot", text: data.response }]);
+      setChat([...newChat, { sender: "bot", text: data.reply }]);
     } catch (err) {
       setChat([...newChat, { sender: "bot", text: "⚠️ Oops! Unable to reach server. Try again later." }]);
     }
